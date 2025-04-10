@@ -1,0 +1,46 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# A continuation prompt that displays two filled-in arrows
+continuation_prompt = '▶▶ '
+
+format = """
+($python )$username@$hostname:$directory (\\[$git_branch( $git_state)( |$git_metrics)( | $git_status)\\] )\\[$kubernetes\\] \\[📅 $time\\]
+\\$ """
+
+[username]
+format = '[$user]($style)'
+show_always = true
+
+[hostname]
+format = '[$hostname]($style)'
+ssh_only = false
+
+[directory]
+format = '[$path]($style)'
+truncation_length = 0
+truncate_to_repo = false
+
+[git_metrics]
+format = '( [+$added]($added_style))( [-$deleted]($deleted_style))'
+disabled = false
+
+[git_status]
+format = "([$all_status$ahead_behind]($style))"
+
+[kubernetes]
+disabled = false
+format = '[$symbol](red) [$context(:$namespace)]($style)'
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
+detect_extensions = []
+detect_files = []
+
+[time]
+disabled = false
+format = '[$time]($style)'
+time_format = '%F %r %Z'

@@ -1,0 +1,12 @@
+[submodule "external_dot_draculatheme/git"]
+	path = external_dot_draculatheme/git
+	url = https://github.com/dracula/git.git
+[submodule "external_dot_draculatheme/dircolors"]
+	path = external_dot_draculatheme/dircolors
+	url = https://github.com/dracula/dircolors.git
+[submodule "external_dot_draculatheme/starship"]
+	path = external_dot_draculatheme/starship
+	url = https://github.com/dracula/starship.git
+[submodule "dot_nano"]
+	path = dot_nano
+	url = https://github.com/scopatz/nanorc.git

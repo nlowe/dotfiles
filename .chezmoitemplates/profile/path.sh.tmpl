@@ -1,0 +1,11 @@
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1:${PATH:+"$PATH"}"
+    fi
+}
+
+mkdir -p "{{ .chezmoi.homeDir }}/.local/bin"
+pathadd "{{ .chezmoi.homeDir }}/.local/bin"
+
+[[ -d /usr/local/go/bin ]] && pathadd /usr/local/go/bin
+pathadd "$(go env GOPATH)/bin"

@@ -1,0 +1,11 @@
+{{- /*
+    The starship config doesn't include any mechanism for including other files, so we can't easily merge the theme with
+    our custom config if they have duplicate sections. Instead, parse both configs first, merge them, and then spit out
+    the resulting TOML.
+*/ -}}
+{{-
+    mustMergeOverwrite
+        (include "external_dot_draculatheme/starship/starship.toml" | fromToml)
+        (include ".chezmoitemplates/starship.toml" | fromToml)
+    | toToml
+-}}

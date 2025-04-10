@@ -1,0 +1,25 @@
+{{ template "profile/path.sh.tmpl" . }}
+
+{{ template "profile/env.sh" . }}
+
+{{ template "profile/history.zsh.sh.tmpl" . }}
+
+{{ template "profile/aliases.sh.tmpl" . }}
+
+{{ template "profile/lib.sh" . }}
+
+{{ template "profile/theme.zsh.sh.tmpl" . }}
+
+{{ template "profile/completion.zsh.sh" . }}
+
+# Suggestions
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# ZSH doesn't listen to home/end for some reason
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+# ZSH Also doesn't listen to del
+bindkey "^[[3~" delete-char

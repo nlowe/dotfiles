@@ -1,0 +1,4 @@
+[[ -r "{{ .chezmoi.homeDir }}/.bash_completion.d/complete_alias" ]] && source "{{ .chezmoi.homeDir }}/.bash_completion.d/complete_alias"
+
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k

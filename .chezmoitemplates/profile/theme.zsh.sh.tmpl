@@ -1,0 +1,12 @@
+{{- template "profile/theme.sh.tmpl" . -}}
+
+# Initialize colors
+autoload -U colors && colors
+
+# Load starship
+function set_win_title() {
+    echo -ne "\033]0; $USER@$HOST: ${PWD/#$HOME/~} \007"
+}
+
+precmd_functions+=(set_win_title)
+eval "$(starship init zsh)"
