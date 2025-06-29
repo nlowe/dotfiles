@@ -1,4 +1,7 @@
 [[ -r "{{ .chezmoi.homeDir }}/.bash_completion.d/complete_alias" ]] && source "{{ .chezmoi.homeDir }}/.bash_completion.d/complete_alias"
 
+source <(hctl completion bash)
 source <(kubectl completion bash)
+
+complete -o default -F __start_hctl h
 complete -o default -F __start_kubectl k
