@@ -1,9 +1,15 @@
-# Personal dotfiles
+# Personal Configuration
 
-These are my peronal dotfiles managed with [`chezmoi`](https://www.chezmoi.io/)
+These are my personal dotfiles and configs managed with `chezmoi`.
 
-To get setup, first [install `chezmoi`](https://www.chezmoi.io/install/), then clone the config and apply it:
+To get setup, first [install `homebrew`](https://brew.sh) and then `chezmoi`:
 
 ```
-chezmoi init --apply git@github.com:nlowe/dotfiles.git
+brew install chezmoi
+```
+
+Then clone the config and apply it:
+
+```
+chezmoi init --apply https://github.com/nlowe/dotfiles.git
 ```

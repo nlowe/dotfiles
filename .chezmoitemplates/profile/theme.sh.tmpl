@@ -1,1 +1,1 @@
-[[ -r "{{ .chezmoi.homeDir }}/.draculatheme/dircolors/.dircolors" ]] && eval $(dircolors "{{ .chezmoi.homeDir }}/.draculatheme/dircolors/.dircolors")
+[[ -r "{{ .chezmoi.homeDir }}/.draculatheme/dircolors/.dircolors" ]] && eval $({{ if eq .chezmoi.os "darwin" }}g{{ end }}dircolors "{{ .chezmoi.homeDir }}/.draculatheme/dircolors/.dircolors")

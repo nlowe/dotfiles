@@ -1,0 +1,17 @@
+FPATH="${FPATH}:{{- if eq .chezmoi.os "linux" }}/usr/share/zsh/vendor-completions{{ else }}/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh{{ end }}"
+
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
+{{- if lookPath "hctl" }}
+source <(hctl completion zsh)
+compdef h='hctl'
+{{- end }}
+{{- if lookPath "kubectl" }}
+source <(kubectl completion zsh)
+compdef k='kubectl'
+{{- end }}
+
+{{- if lookPath "tk" }}
+complete -o nospace -C /usr/local/bin/tk tk
+{{- end }}

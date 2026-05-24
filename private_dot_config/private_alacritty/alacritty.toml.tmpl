@@ -1,0 +1,72 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# See the docs for a list of other options: https;//alacritty.org/config-alacritty.html
+
+[general]
+
+import = [
+  "{{ .chezmoi.homeDir }}/.draculatheme/alacritty/dracula.toml",
+]
+
+live_config_reload = true
+
+[terminal.shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[env]
+# Force xterm-256color for compatibility with SSH Sessions to hosts with old terminfo databases
+# TODO: Move this to SSH Config
+TERM="xterm-256color"
+
+[window.padding]
+  x = 10
+  y = 5
+
+# Zellij and alacritty don't play well with selection colors.
+# Use a slightly darker background to make selection visible.
+[colors.primary]
+background = "#16171d"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "Hack Nerd Font"
+
+[font.bold_italic]
+family = "Hack Nerd Font"
+
+[font.italic]
+family = "Hack Nerd Font"
+
+[font.normal]
+family = "Hack Nerd Font"
+
+[[keyboard.keybindings]]
+action = "Paste"
+key = "Insert"
+mods = "Shift"
+
+[[keyboard.keybindings]]
+chars = "\u0011"
+key = "Q"
+mods = "Control"
+
+[[keyboard.keybindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.keybindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.keybindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[mouse.bindings]]
+action = "Paste"
+mouse = "Right"

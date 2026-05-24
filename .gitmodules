@@ -8,5 +8,11 @@
 	path = external_dot_draculatheme/starship
 	url = https://github.com/dracula/starship.git
 [submodule "dot_nano"]
-	path = dot_nano
+	path = external_dot_nano
 	url = https://github.com/scopatz/nanorc.git
+[submodule "external_dot_draculatheme/alacritty"]
+	path = external_dot_draculatheme/alacritty
+	url = https://github.com/dracula/alacritty.git
+[submodule "external_dot_draculatheme/zellij"]
+	path = external_dot_draculatheme/zellij
+	url = https://github.com/dracula/zellij.git

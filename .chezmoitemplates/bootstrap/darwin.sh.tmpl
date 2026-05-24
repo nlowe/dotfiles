@@ -1,0 +1,226 @@
+#!/bin/bash
+
+# System Preferences
+# See https;//github.com/mathiasbynens/dotfiles/blob/main/.macos
+
+# Clowe any open System Preferences panes, to prevent them from overriding settings we're about to change.
+osacript -e 'tell application "System Preferences" to quit'
+
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+# Disable the "Are you sure you want to open this application?" dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Disable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable automatic period substitution
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable "natural" scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Fast key repeat
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Finder: show hidden files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Enable spring loading for directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Remove the spring loading delay for directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Use list view in all Finder windows by default
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Speed up Mission Control animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# Don't automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+# Remove the animation when hiding/showing the dock
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Automatically hide and show the dock
+defaults write com.apple.dock.autohide -bool true
+
+# Don't show recent applications in the dock
+defaults write com.apple.dock show-recents -bool false
+
+# Configure Hot Corners
+# Possible Values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# 13: Lock screen
+
+# Top left/right corner -> Mission Control
+defaults write com.apple.dock wvous-tl-corner -int 2
+defaults write com.apple.dock wvous-tl-modifier -int 0
+defaults write com.apple.dock wvous-tr-corner -int 2
+defaults write com.apple.dock wvous-tr-modifier -int 0
+
+# Control Center
+defaults write com.apple.controlcenter "NSStatusItem Visible AudioVideoModule" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible BentoBox" -bool true
+defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+defaults write com.apple.controlcenter "NSStatusItem Visible Clock" -bool true
+defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -bool true
+defaults write com.apple.menuextra.clock IsAnalog -bool true
+defaults write com.apple.menuextra.clock ShowDate -int 2
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
+
+# Homebrew configuration
+brew analytics off
+
+# Install packages
+brew bundle --file=/dev/stdin <<EOF
+# Taps
+tap "colindean/fonts-nonfree"
+
+# Formulae
+brew "glib"
+brew "bat"
+brew "chezmoi"
+brew "colordiff"
+brew "colormake"
+brew "coreutils"
+brew "dive"
+brew "docker"
+brew "docker-buildx"
+brew "docker-compose"
+brew "ffmpeg"
+brew "findutils"
+brew "git"
+brew "git-delta"
+brew "git-lfs"
+brew "git-sizer"
+brew "gnu-indent"
+brew "gnu-sed"
+brew "gnu-tar"
+brew "gnupg"
+brew "go"
+brew "go-jsonnet"
+brew "graphviz"
+brew "grep"
+brew "grepcidr"
+brew "helm"
+brew "htop"
+brew "less"
+brew "jq"
+brew "jsonnet-bundler"
+brew "kubernetes-cli"
+brew "make"
+brew "mtr"
+brew "nano"
+brew "pianobar"
+brew "python-yq"
+brew "s3cmd"
+brew "shellcheck"
+brew "starship"
+brew "tanka"
+brew "tree"
+brew "watch"
+brew "wget"
+brew "zellij"
+brew "zsh-autosuggestions"
+
+# Casks
+cask "alacritty"
+cask "datagrip"
+cask "font-hack"
+cask "font-hack-nerd-font"
+cask "font-microsoft-office"
+cask "gimp"
+cask "goland"
+cask "hiddenbar"
+cask "imhex"
+cask "itsycal"
+cask "lens"
+cask "pycharm"
+cask "rectangle"
+cask "stats"
+cask "visual-studio-code"
+cask "vlc"
+cask "wireshark-app"
+
+# VS Code Extensions
+vscode "dracula-theme.theme-dracula"
+vscode "emeraldwalk.runonsave"
+vscode "golang.go"
+vscode "grafana.vscode-jsonnet"
+vscode "hashicorp.terraform"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode.remote-explorer"
+vscode "redhat.vscode-yaml"
+vscode "tamasfe.even-better-toml"
+vscode "wayou.vscode-todo-highlight"
+EOF
+
+# Stats
+defaults write eu.exelban.Stats Battery_battery_additional -string 'percentage'
+defaults write eu.exelban.Stats Battery_battery_color -bool true
+defaults write eu.exelban.Stats Battery_battery_hideAdditionalWhenFull -bool false
+defaults write eu.exelban.Stats Battery_color -bool true
+defaults write eu.exelban.Stats Battery-state -bool true
+defaults write eu.exelban.Stats Clock_sensors_monospacedFont -bool true
+defaults write eu.exelban.Stats Clock_state -bool true
+defaults write eu.exelban.Stats Disk_state -bool false
+defaults write eu.exelban.Stats LaunchAtLoginNext -bool true
+defaults write eu.exelban.Stats Network_state -bool false
+defaults write eu.exelban.Stats RAM_mini_position -int 0
+defaults write eu.exelban.Stats RAM_widget -string mini
+defaults write eu.exelban.Stats telemetry -bool false
+
+# itsycal
+defaults write com.mowglii.ItsycalApp MenuBarIconType -int 0
+defaults write com.mowglii.ItsycalApp SUEnableAutomaticChecks -bool false
+defaults write com.mowglii.ItsycalApp ShowDayOfWeekInIcon -bool true
+defaults write com.mowglii.ItsycalApp ShowMonthInIcon -bool true

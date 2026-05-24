@@ -10,16 +10,30 @@
 
 {{ template "profile/theme.zsh.sh.tmpl" . }}
 
-{{ template "profile/completion.zsh.sh" . }}
+{{ template "profile/completion.zsh.sh.tmpl" . }}
 
 # Suggestions
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+{{- if eq .chezmoi.os "darwin" }}
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+{{- else if eq .chezmoi.os "linux" }}
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+{{- end }}
 
 # ZSH doesn't listen to home/end for some reason
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
+# Functions to make it easier to type URLs as command line arguments. As you type, the input character is analyzed and,
+# if it may need quoting, the current word is checked for a URI scheme. If one is found and the current word is not
+# already in quotes, a backslash is inserted before the input character.
+#
+# See https://unix.stackexchange.com/a/736074
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+{{- if eq .chezmoi.os "linux" }}
 # ZSH Also doesn't listen to del
 bindkey "^[[3~" delete-char
+{{- end }}

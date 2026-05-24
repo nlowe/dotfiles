@@ -1,0 +1,47 @@
+{
+    "editor.minimap.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+    "update.mode": "manual",
+    "editor.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "extensions.ignoreRecommendations": true,
+    "files.watcherExclude": {
+        ".git/objects/**": true,
+        ".git/subtree-cache/**": true,
+        ".hg/store/**": true,
+        "*/.git/objects/**": true,
+        "*/.git/subtree-cache/**": true,
+        "*/.hg/store/**": true,
+        "**/node_modules/**": true,
+    },
+    "json.maxItemsComputed": 5000000,
+    "redhat.telemetry.enabled": false,
+    "git.ignoreLegacyWarning": true,
+    "git.openRepositoryInParentFolders": "never",
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [120],
+    "go.lintOnSave": "off",
+    "go.vetOnSave": "off",
+    "[go]": {
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "never",
+            "source.organizeImports": "never"
+        }
+    },
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "never",
+        "source.organizeImports": "never",
+    },
+    "[plaintext]": {
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.unicodeHighlight.invisibleCharacters": false
+    },
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.initialHint": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.colorTheme": "Dracula Theme"
+}
